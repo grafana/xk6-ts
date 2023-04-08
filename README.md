@@ -12,7 +12,7 @@ Use `--compatibility-mode=enhanced` to activate enhanced JavaScript compatibilit
 
 ## Features
 
-In enhanced compatibility mode the test script will be loaded using [esbuild](https://esbuild.github.io/). Most of the esbuild features will be available in script.
+In enhanced compatibility mode the test script will be loaded using (embedded) [esbuild](https://esbuild.github.io/). Most of the esbuild features will be available in script.
 
  - TypeScript language support
     ```bash
