@@ -1,6 +1,6 @@
 module github.com/szkiba/xk6-enhanced
 
-go 1.18
+go 1.19
 
 require (
 	github.com/evanw/esbuild v0.17.15
