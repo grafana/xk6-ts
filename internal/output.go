@@ -33,7 +33,7 @@ type Output struct{}
 
 var _ output.Output = (*Output)(nil)
 
-func New(params output.Params) (output.Output, error) { //nolint:ireturn
+func New(params output.Params) (output.Output, error) { //nolint:ireturn,revive
 	return new(Output), nil
 }
 
@@ -49,7 +49,7 @@ func (out *Output) Stop() error {
 	return nil
 }
 
-func (out *Output) AddMetricSamples(samples []metrics.SampleContainer) {
+func (out *Output) AddMetricSamples(samples []metrics.SampleContainer) { //nolint:revive
 }
 
 var ErrUsage = errors.New("use --compatibility-mode=enhanced to enable enhanced JavaScript compatibility (TypeScript, etc)")
