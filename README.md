@@ -1,5 +1,8 @@
 # xk6-enhanced
 
+**TypeScript support for k6**
+
+
 A [k6 extension](https://k6.io/docs/extensions/) adds enhanced JavaScript compatibility (TypeSyript, import JSON files, etc) to [k6](https://k6.io) scripts. 
 
 Use `--compatibility-mode=enhanced` to activate enhanced JavaScript compatibility mode.
@@ -32,37 +35,25 @@ In enhanced compatibility mode the test script will be loaded using (embedded) [
    - import TypeScript module from JavaScript script/module
    - import JavaScript module from TypeScript script/module
 
-## Limitations
-
-Remote modules loaded by k6, so no enhanced features (TypeScript, etc) not available (yet) for remote modules. Remote module loading support is a planned feature.
-
 ## Download
 
-You can download pre-built k6 binaries from [Releases](https://github.com/szkiba/xk6-enhanced/releases/) page. Check [Packages](https://github.com/szkiba/xk6-enhanced/pkgs/container/xk6-enhanced) page for pre-built k6 Docker images.
+You can download pre-built k6 binaries from [Releases](https://github.com/szkiba/xk6-ts/releases/) page. Check [Packages](https://github.com/szkiba/xk6-ts/pkgs/container/xk6-ts) page for pre-built k6 Docker images.
 
-## Build
+**Build**
 
-To build a `k6` binary with this extension, first ensure you have the prerequisites:
+The [xk6](https://github.com/grafana/xk6) build tool can be used to build a k6 that will include xk6-faker extension:
 
-- [Go toolchain](https://go101.org/article/go-toolchain.html)
-- Git
+```bash
+$ xk6 build --with github.com/szkiba/xk6-ts@latest
+```
 
-Then:
+For more build options and how to use xk6, check out the [xk6 documentation](https://github.com/grafana/xk6).
 
-1. Download `xk6`:
-  ```bash
-  $ go install go.k6.io/xk6/cmd/xk6@latest
-  ```
-
-2. Build the binary:
-  ```bash
-  $ xk6 build --with github.com/szkiba/xk6-enhanced@latest
-  ```
 
 ## Usage
 
 ```bash
-$ ./k6 run --compatibility-mode=enhanced script.js
+$ ./k6 run script.ts
 ```
 
 ## Docker
