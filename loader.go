@@ -2,10 +2,8 @@
 package ts
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"github.com/sirupsen/logrus"
 	"github.com/szkiba/k6pack"
@@ -41,32 +39,21 @@ func isRunCommand(args []string) (bool, int) {
 	return true, scriptIndex
 }
 
-func isEnabled(filename string) bool {
-	if strings.HasSuffix(filename, ".ts") {
-		return true
-	}
-
-	if !strings.HasSuffix(filename, ".js") {
-		return true
-	}
-
-	return os.Getenv("XK6_TS") == "always" //nolint:forbidigo
-}
-
 //nolint:forbidigo
 func redirectStdin() {
+	if os.Getenv("XK6_TS") == "false" {
+		return
+	}
+
 	isRun, scriptIndex := isRunCommand(os.Args)
 	if !isRun {
 		return
 	}
 
 	filename := os.Args[scriptIndex]
-
-	if !isEnabled(filename) {
+	if filename == "-" {
 		return
 	}
-
-	fmt.Println("Heeee")
 
 	opts := &k6pack.Options{
 		Filename:  filename,
