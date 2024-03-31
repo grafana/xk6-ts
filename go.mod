@@ -1,4 +1,4 @@
-module github.com/szkiba/xk6-enhanced
+module github.com/szkiba/xk6-ts
 
 go 1.21
 

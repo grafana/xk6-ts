@@ -1,4 +1,4 @@
-# xk6-enhanced
+# xk6-ts
 
 **TypeScript support for k6**
 
