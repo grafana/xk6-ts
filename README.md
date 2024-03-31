@@ -81,6 +81,12 @@ xk6-ts can be disabled by setting the `XK6_TS` environment variable to `false`.
     ```bash
     k6 run script.ts
     ```
+ - remote (https) TypeScript/JavaScript module support
+    ```js
+    import { User } from 'https://example.com/user.ts'
+    console.log(new User())
+    ```
+
  - importing JSON files as JavaScript object
     ```js
     import object from './example.json'
