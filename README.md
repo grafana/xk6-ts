@@ -2,24 +2,84 @@
 
 **TypeScript support for k6**
 
+xk6-ts makes TypeScript a first-class citizen in k6.
 
-A [k6 extension](https://k6.io/docs/extensions/) adds enhanced JavaScript compatibility (TypeSyript, import JSON files, etc) to [k6](https://k6.io) scripts. 
-
-Use `--compatibility-mode=enhanced` to activate enhanced JavaScript compatibility mode.
-
-```bash
-./k6 run --compatibility-mode=enhanced script.js
+```sh
+k6 run script.ts
 ```
 
-> See [script.ts](script.ts), [script.js](script.js), [user.ts](user.ts) for basic example
+<details>
+<summary>script.ts</summary>
+
+```ts file=examples/script.ts
+import { User, newUser } from "./user";
+
+export default () => {
+  const user: User = newUser("John");
+  console.log(user);
+};
+```
+
+</details>
+
+<details>
+<summary>user.ts</summary>
+
+```ts file=examples/user.ts
+interface User {
+  name: string;
+  id: number;
+}
+
+class UserAccount implements User {
+  name: string;
+  id: number;
+
+  constructor(name: string) {
+    this.name = name;
+    this.id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+  }
+}
+
+function newUser(name: string): User {
+  return new UserAccount(name);
+}
+
+export { User, newUser };
+```
+
+</details>
+
+That's it. A test written in TypeScript can be run directly with k6. No need for Node.js, babel, webpack, bundler, build step, etc.
+
+Do you think modern JavaScript features make TypeScript pointless? xk6-ts can also be used to support modern JavaScript features in k6. 
+
+```sh
+k6 run script.js
+```
+
+<details>
+<summary>script.js</summary>
+
+```ts file=examples/script.js
+import { newUser } from "./user";
+
+export default () => {
+  const user = newUser("John");
+  console.log(user);
+};
+```
+
+</details>
+
+
+xk6-ts can be disabled by setting the `XK6_TS` environment variable to `false`.
 
 ## Features
 
-In enhanced compatibility mode the test script will be loaded using (embedded) [esbuild](https://esbuild.github.io/). Most of the esbuild features will be available in script.
-
  - TypeScript language support
     ```bash
-    ./k6 run --compatibility-mode=enhanced script.ts
+    k6 run script.ts
     ```
  - importing JSON files as JavaScript object
     ```js
@@ -32,14 +92,14 @@ In enhanced compatibility mode the test script will be loaded using (embedded) [
     console.log(string)
     ```
  - mix and match JavaScript and TypeScript
-   - import TypeScript module from JavaScript script/module
-   - import JavaScript module from TypeScript script/module
+   - import TypeScript module from JavaScript module
+   - import JavaScript module from TypeScript module
 
 ## Download
 
 You can download pre-built k6 binaries from [Releases](https://github.com/szkiba/xk6-ts/releases/) page. Check [Packages](https://github.com/szkiba/xk6-ts/pkgs/container/xk6-ts) page for pre-built k6 Docker images.
 
-**Build**
+## Build
 
 The [xk6](https://github.com/grafana/xk6) build tool can be used to build a k6 that will include xk6-faker extension:
 
@@ -49,26 +109,8 @@ $ xk6 build --with github.com/szkiba/xk6-ts@latest
 
 For more build options and how to use xk6, check out the [xk6 documentation](https://github.com/grafana/xk6).
 
+## How It Works
 
-## Usage
+Under the hood, xk6-ts uses the [esbuild](https://github.com/evanw/esbuild) library for transpiling and bundling. To be precise, xk6-ts uses the [k6pack](https://github.com/szkiba/k6pack) library, which is based on esbuild.
 
-```bash
-$ ./k6 run script.ts
-```
-
-## Docker
-
-You can also use pre-built k6 image within a Docker container. To do that, you'll need to execute something more-or-less like the following:
-
-**Linux**
-
-```plain
-docker run -v $(pwd):/scripts -it --rm ghcr.io/szkiba/xk6-enhanced:latest run --compatibility-mode=enhanced /scripts/script.js
-```
-
-**Windows**
-
-```plain
-docker run -v %cd%:/scripts -it --rm ghcr.io/szkiba/xk6-enhanced:latest run --compatibility-mode=enhanced /scripts/script.js
-```
-
+Before the test run, transpilation and bundling are done on the fly.
