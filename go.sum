@@ -11,8 +11,8 @@ github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsTg=
 github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
-github.com/szkiba/k6pack v0.1.0 h1:n1XrDFehZ0EsvYJ8oX5ExsryZMCBwA6GNsTi95eLsas=
-github.com/szkiba/k6pack v0.1.0/go.mod h1:2yxZBwXidrURozrVZWwohqqEOjdCVyHCZPSKu77i7Bc=
+github.com/szkiba/k6pack v0.1.1 h1:vqHe9aQvvEV7eIXB7SwNkPnp3L8WLNCpYxxpWTE2xmE=
+github.com/szkiba/k6pack v0.1.1/go.mod h1:2yxZBwXidrURozrVZWwohqqEOjdCVyHCZPSKu77i7Bc=
 golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.18.0 h1:DBdB3niSjOA/O0blCZBqDefyWNYveAYMNF1Wum0DYQ4=
 golang.org/x/sys v0.18.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
