@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/sirupsen/logrus v1.9.0
-	github.com/szkiba/k6pack v0.1.0
+	github.com/szkiba/k6pack v0.1.1
 )
 
 require (
