@@ -130,4 +130,4 @@ xk6-ts is currently integrated into k6 by modifying the execution of the `k6 run
 
 ## Benchmarking
 
-Setting the `XK6_TS_BENCHMARK` environment variable to true will log the time spent on TypeScript/JavaScript bundling. This time also includes downloading any remote modules.
+Setting the `XK6_TS_BENCHMARK` environment variable to `true` will log the time spent on TypeScript/JavaScript bundling. This time also includes downloading any remote modules.
