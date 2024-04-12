@@ -75,7 +75,8 @@ export default () => {
 
 xk6-ts can be disabled by setting the `XK6_TS` environment variable to `false`.
 
-During the development of the test script, it is recommended to set the `XK6_TS_SOURCEMAP` environment variable to `true`. Thus, the runtime error messages will report the correct source code position. Otherwise, due to transpilation and bundling, the source code position is meaningless.
+To ensure that runtime error messages report the correct source code position, sourcemap generation is enabled by default. Otherwise, due to transpilation and bundling, the source code position is meaningless.
+Sourcemap generation can be disabled by setting the value of the `XK6_TS_SOURCEMAP` environment variable to `false`.
 
 ## Features
 
@@ -122,3 +123,7 @@ For more build options and how to use xk6, check out the [xk6 documentation](htt
 Under the hood, xk6-ts uses the [esbuild](https://github.com/evanw/esbuild) library for transpiling and bundling. To be precise, xk6-ts uses the [k6pack](https://github.com/szkiba/k6pack) library, which is based on esbuild.
 
 Before the test run, transpilation and bundling are done on the fly.
+
+## Compatibility warning
+
+xk6-ts is currently integrated into k6 by modifying the execution of the `k6 run` command. This is a temporary solution, the final integration will be done in a different way. This temporary integration assumes that the last argument of the `k6 run` command line is the name of the script file. That is, contrary to the way the original `k6 run` command line works, xk6-ts does not accept flags after the script file name. By the way, this assumption is not uncommon, many other commands only accept flags before positional arguments. (the original `k6 run` command also accepts flags after the positional argument).
