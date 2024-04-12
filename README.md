@@ -75,7 +75,8 @@ export default () => {
 
 xk6-ts can be disabled by setting the `XK6_TS` environment variable to `false`.
 
-During the development of the test script, it is recommended to set the `XK6_TS_SOURCEMAP` environment variable to `true`. Thus, the runtime error messages will report the correct source code position. Otherwise, due to transpilation and bundling, the source code position is meaningless.
+To ensure that runtime error messages report the correct source code position, sourcemap generation is enabled by default. Otherwise, due to transpilation and bundling, the source code position is meaningless.
+Sourcemap generation can be disabled by setting the value of the `XK6_TS_SOURCEMAP` environment variable to `false`.
 
 ## Features
 

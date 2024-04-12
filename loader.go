@@ -57,7 +57,7 @@ func redirectStdin() {
 
 	opts := &k6pack.Options{
 		Filename:  filename,
-		SourceMap: os.Getenv("XK6_TS_SOURCEMAP") == "true",
+		SourceMap: os.Getenv("XK6_TS_SOURCEMAP") != "false",
 	}
 
 	source, err := os.ReadFile(filepath.Clean(filename))
