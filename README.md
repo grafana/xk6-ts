@@ -127,3 +127,7 @@ Before the test run, transpilation and bundling are done on the fly.
 ## Compatibility warning
 
 xk6-ts is currently integrated into k6 by modifying the execution of the `k6 run` command. This is a temporary solution, the final integration will be done in a different way. This temporary integration assumes that the last argument of the `k6 run` command line is the name of the script file. That is, contrary to the way the original `k6 run` command line works, xk6-ts does not accept flags after the script file name. By the way, this assumption is not uncommon, many other commands only accept flags before positional arguments. (the original `k6 run` command also accepts flags after the positional argument).
+
+## Benchmarking
+
+Setting the `XK6_TS_BENCHMARK` environment variable to `true` will log the time spent on TypeScript/JavaScript bundling. This time also includes downloading any remote modules.
