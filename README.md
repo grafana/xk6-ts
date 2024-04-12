@@ -123,3 +123,7 @@ For more build options and how to use xk6, check out the [xk6 documentation](htt
 Under the hood, xk6-ts uses the [esbuild](https://github.com/evanw/esbuild) library for transpiling and bundling. To be precise, xk6-ts uses the [k6pack](https://github.com/szkiba/k6pack) library, which is based on esbuild.
 
 Before the test run, transpilation and bundling are done on the fly.
+
+## Compatibility warning
+
+xk6-ts is currently integrated into k6 by modifying the execution of the `k6 run` command. This is a temporary solution, the final integration will be done in a different way. This temporary integration assumes that the last argument of the `k6 run` command line is the name of the script file. That is, contrary to the way the original `k6 run` command line works, xk6-ts does not accept flags after the script file name. By the way, this assumption is not uncommon, many other commands only accept flags before positional arguments. (the original `k6 run` command also accepts flags after the positional argument).
