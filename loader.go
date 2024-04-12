@@ -4,6 +4,7 @@ package ts
 import (
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/sirupsen/logrus"
 	"github.com/szkiba/k6pack"
@@ -65,9 +66,16 @@ func redirectStdin() {
 		logrus.WithError(err).Fatal()
 	}
 
+	packStarted := time.Now()
+
 	jsScript, err := k6pack.Pack(string(source), opts)
 	if err != nil {
 		logrus.WithError(err).Fatal()
+	}
+
+	if os.Getenv("XK6_TS_BENCHMARK") == "true" {
+		duration := time.Since(packStarted)
+		logrus.WithField("extension", "xk6-ts").WithField("duration", duration).Info("Bundling completed in ", duration)
 	}
 
 	os.Args[scriptIndex] = "-"
