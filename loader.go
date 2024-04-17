@@ -85,18 +85,14 @@ func redirectStdin() {
 		logrus.WithError(err).Fatal()
 	}
 
-	defer writer.Close() //nolint:errcheck
-
-	origStdin := os.Stdin
-
 	os.Stdin = reader
 
-	_, err = writer.Write(jsScript)
-	if err != nil {
+	go func() {
+		_, werr := writer.Write(jsScript)
 		writer.Close() //nolint:errcheck,gosec
 
-		os.Stdin = origStdin
-
-		logrus.WithError(err).Fatal()
-	}
+		if werr != nil {
+			logrus.WithError(werr).Fatal("stdin redirect failed")
+		}
+	}()
 }
