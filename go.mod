@@ -3,8 +3,8 @@ module github.com/szkiba/xk6-ts
 go 1.21
 
 require (
+	github.com/grafana/k6pack v0.1.5
 	github.com/sirupsen/logrus v1.9.3
-	github.com/szkiba/k6pack v0.1.3
 	go.k6.io/k6 v0.50.0
 )
 

@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/grafana/k6pack"
 	"github.com/sirupsen/logrus"
-	"github.com/szkiba/k6pack"
 )
 
 func init() {
