@@ -120,7 +120,7 @@ For more build options and how to use xk6, check out the [xk6 documentation](htt
 
 ## How It Works
 
-Under the hood, xk6-ts uses the [esbuild](https://github.com/evanw/esbuild) library for transpiling and bundling. To be precise, xk6-ts uses the [k6pack](https://github.com/szkiba/k6pack) library, which is based on esbuild.
+Under the hood, xk6-ts uses the [esbuild](https://github.com/evanw/esbuild) library for transpiling and bundling. To be precise, xk6-ts uses the [k6pack](https://github.com/grafana/k6pack) library, which is based on esbuild.
 
 Before the test run, transpilation and bundling are done on the fly.
 
