@@ -3,7 +3,7 @@ module github.com/grafana/xk6-ts
 go 1.20
 
 require (
-	github.com/grafana/k6pack v0.1.5
+	github.com/grafana/k6pack v0.2.4
 	github.com/sirupsen/logrus v1.9.3
 	go.k6.io/k6 v0.51.1-0.20240610082146-1f01a9bc2365
 )
