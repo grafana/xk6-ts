@@ -1,5 +1,8 @@
 # xk6-ts
 
+>[!WARNING]
+>This extension is deprecated because its functionality [has been included in k6](https://grafana.com/docs/k6/latest/using-k6/javascript-typescript-compatibility-mode/).
+
 **TypeScript support for k6**
 
 xk6-ts makes TypeScript a first-class citizen in k6.
